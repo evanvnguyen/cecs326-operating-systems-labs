@@ -48,7 +48,6 @@ int main() {
 		printf("Fatal error. Unknown return\n");
 	}
 
-
 	char inc_message[256];
 
 	while (is_ready) {	
@@ -64,7 +63,7 @@ int main() {
 		}
 		
 		// echo here
-		send(client_socket, &inc_message, sizeof(msg), 0);
+		send(client_socket, &inc_message, sizeof(inc_message), 0);
 
 		printf("[Client] %s\n\n", inc_message);
 		
