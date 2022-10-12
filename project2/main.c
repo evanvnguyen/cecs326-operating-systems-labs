@@ -5,7 +5,7 @@
 
 int main(){
 	//  5 pthreads per philosopher
-	pthread_t phi1, phi2, phi3, phi4, phi4, phi5;
+	pthread_t phi1, phi2, phi3, phi4, phi5;
 	
 	// create independent threads for each
 	return 0;
