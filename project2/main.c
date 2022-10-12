@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include <Stdlib.h>
+#include <stdlib.h>
 #include <pthread.h>
 
 int main(){
