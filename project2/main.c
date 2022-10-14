@@ -5,14 +5,14 @@
 
 #define PHIL_COUNT 5
 
+// Define philosophers threads and mutexs & init the chopsticks
 pthread_t philosophers[PHIL_COUNT];
 pthread_mutex_t mutex_chopsticks = PTHREAD_MUTEX_INITIALIZER;; 
 int chopsticks[PHIL_COUNT];
 
 void init()
 {
-	int i;
-	for(i=0; i<PHIL_COUNT; i++) {
+	for(int i = 0; i < PHIL_COUNT; i++) {
 		chopsticks[i] = 0;
 	}
 }
@@ -22,15 +22,17 @@ void philosopher(int i)
 	long int wait_time, eat_time;
 	int right = i;
 	int left = (i - 1 == -1) ? PHIL_COUNT - 1 : (i - 1);	
-	int locked;	
+	int flag;	
 
 	while(1){
-		locked = 0;
-		while(!locked) {
+		flag = 0;
+		while(!flag) {
+			// lock the mutex to 1 thread (philosopher)
 			pthread_mutex_lock(&mutex_chopsticks);
 
 			// check if 1 chopstick is picked up
 			if (chopsticks[right] || chopsticks[left]) {
+				// unlock it for another philosopher
 				pthread_mutex_unlock(&mutex_chopsticks); // give up either chopstick unless both are available
 				printf("Philosopher #%d can't use both chopsticks. Giving up and thinking.\n", i+1);
 				
@@ -44,9 +46,10 @@ void philosopher(int i)
 			// otherwise, pick up both, and lock the chopsticks
 			chopsticks[left] = 1;
 			chopsticks[right] = 1;
-
+			
+			// unlock for another potential philosopher
 			pthread_mutex_unlock(&mutex_chopsticks);
-			locked = 1;
+			flag = 1;
 		}
 
 		printf("Philosopher #%d took both chopsticks. Now eating.\n", i+1);
@@ -64,7 +67,6 @@ void philosopher(int i)
 		// sleep for easier output reading
 		sleep(2);
 	}
-
 }
 
 int main()
@@ -78,7 +80,7 @@ int main()
 	}
 	
 	// Wait for the target thread to terminate
-	for(i=0; i<PHIL_COUNT; i++){
+	for(i = 0; i < PHIL_COUNT; i++){
 
 		pthread_join(philosophers[i],NULL);
 	}
