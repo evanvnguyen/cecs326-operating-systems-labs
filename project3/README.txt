@@ -4,8 +4,8 @@ Group: Evan Nguyen 025625195
 
 NOTE: This Makefile utilizes clang instead of gcc. To compile the source,
 ensure you have the latest version of clang installed on your machine. You
-can skip this portion if clang is installed. If you would rather use gcc, see
-below:
+may skip this portion if clang is installed. If you would rather use gcc,
+see below:
 
 Changing the Makefile to use gcc:
 ----------------------------------
@@ -14,7 +14,7 @@ Changing the Makefile to use gcc:
 2) replace clang with gcc
 	--> gcc -o main main.c
 
-Standard clang compilation:
+Compiling and Executing:
 ---------------------------------
 1) In terminal/command line, type this command to run the makefile:
 	--> make
