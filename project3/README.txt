@@ -3,8 +3,8 @@ Project 3
 Group: Evan Nguyen 025625195
 
 NOTE: This Makefile utilizes clang instead of gcc. To compile the source,
-ensure you have the latest version of clang installed on your machine. If
-skip this portion if clang is installed. If you would rather use gcc, see
+ensure you have the latest version of clang installed on your machine. You
+can skip this portion if clang is installed. If you would rather use gcc, see
 below:
 
 Changing the Makefile to use gcc:
