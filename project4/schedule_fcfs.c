@@ -28,18 +28,19 @@
 // FCFS does not care about priority
 
 struct Task returnTaskContents(void);
+struct node returnLinkedList(struct Task); // to be examined
 
-// ignore priority
+// Dummy struct
+// This is implemented in task.h
 struct Task {
 	char name[2];
-	int burst_time;
+	int burst;
 };
 
 int main(){
 	returnTaskContents();
 	return 0;
 }
-
 struct Task returnTaskContents(void){
 	
 	// read the file
@@ -60,16 +61,27 @@ struct Task returnTaskContents(void){
 		ch = fgetc(ptr);
 		printf("%c", ch);
 	} while (ch != EOF);
-
-	// close the file 
-	fclose(ptr);
-
+	
 	// dummy task
 	struct Task Task1;
 	strcpy(Task1.name, "t1");
-	Task1.burst_time = 0;
+	Task1.burst = 0;
 
+	// ***************************************
+	// Parse for comma separater
+	// Add name and burst time to the struct
+	// ***************************************
+
+	// close the file 
+	fclose(ptr);	
+	
 	return Task1;
 }	
 
-
+// returns a node
+// traverse it in main
+struct node returnLinkedList(struct Task){
+	// add the tasks to the linked list
+	// starting with the first task
+	return NULL;
+}
