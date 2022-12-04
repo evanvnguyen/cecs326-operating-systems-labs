@@ -70,13 +70,6 @@ int returnTaskContents(void){
 			j++;
 		}
 		fclose(fp);
-	
-		printf("Name: %s, Priority: %d, Burst: %d\n",
-				tasks[0].name,
-				tasks[0].priority,
-				tasks[0].burst);
-		
-
 	} else {
 		printf("error\n");
 	}
