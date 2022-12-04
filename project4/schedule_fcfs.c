@@ -27,61 +27,52 @@
 // T2, 3, 25
 // FCFS does not care about priority
 
-struct Task returnTaskContents(void);
-struct node returnLinkedList(struct Task); // to be examined
+int returnTaskContents(void);
+struct node returnLinkedList(struct task); // to be examined
 
-// Dummy struct
-// This is implemented in task.h
-struct Task {
-	char name[2];
-	int burst;
-};
+const char filename[] = "schedule.txt";
 
 int main(){
 	returnTaskContents();
 	return 0;
 }
-struct Task returnTaskContents(void){
-	
-	// read the file
-	FILE* ptr;
-	char ch;
 
-	// open file in reading mode
-	ptr = fopen("schedule.txt", "r");
-
-	if (NULL == ptr) {
-		printf("file can't be opened\n");
+int returnTaskContents(void){
+	FILE *fp = fopen(filename, "r");
+	const char s[2] = ",";
+	char *token;
+	int i;
+	if (fp != NULL){
+		char line[20];
+		while (fgets(line,sizeof line, fp) != NULL){
+			token = strtok(line, s);
+			for (i = 0; i < 3; i++){
+				if (i == 0){
+					// read task name
+					printf("%s ", token);
+					token = strtok(NULL, s);
+				} else if (i == 1) {
+					// read task priority
+					printf("%d ", atoi(token));
+				} else if (i == 2) {
+					// read task burst time
+					token = strtok(NULL, s);
+					printf("%d\n", atoi(token));
+				}
+			}
+		}
+		fclose(fp);
+	} else {
+		printf("error\n");
 	}
 	
-	printf("content: \n");
-
-	// print what is written in file char by char
-	do {
-		ch = fgetc(ptr);
-		printf("%c", ch);
-	} while (ch != EOF);
-	
-	// dummy task
-	struct Task Task1;
-	strcpy(Task1.name, "t1");
-	Task1.burst = 0;
-
-	// ***************************************
-	// Parse for comma separater
-	// Add name and burst time to the struct
-	// ***************************************
-
-	// close the file 
-	fclose(ptr);	
-	
-	return Task1;
+	return 1;
 }	
 
 // returns a node
 // traverse it in main
-struct node returnLinkedList(struct Task){
+//struct node returnLinkedList(struct task){
 	// add the tasks to the linked list
 	// starting with the first task
-	return NULL;
-}
+//	return NULL;
+///}
