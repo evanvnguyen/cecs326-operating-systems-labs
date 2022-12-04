@@ -1,5 +1,5 @@
 /**
- * FCFS scheduling
+	 * FCFS scheduling
  */
  
 #include <stdlib.h>
@@ -42,30 +42,54 @@ int returnTaskContents(void){
 	const char s[2] = ",";
 	char *token;
 	int i;
+	int j = 0;
+
+	Task tasks[8];
+	
 	if (fp != NULL){
 		char line[20];
 		while (fgets(line,sizeof line, fp) != NULL){
-			token = strtok(line, s);
 			for (i = 0; i < 3; i++){
 				if (i == 0){
+					token = strtok(line, s);
 					// read task name
-					printf("%s ", token);
-					token = strtok(NULL, s);
+					printf("%d %s ", j, token);
+					tasks[j].name = token;
 				} else if (i == 1) {
 					// read task priority
+					token = strtok(NULL, s);
 					printf("%d ", atoi(token));
+					tasks[j].priority = atoi(token);
 				} else if (i == 2) {
 					// read task burst time
 					token = strtok(NULL, s);
+					tasks[j].burst = atoi(token);
 					printf("%d\n", atoi(token));
 				}
 			}
+			j++;
 		}
 		fclose(fp);
+	
+		printf("Name: %s, Priority: %d, Burst: %d\n",
+				tasks[0].name,
+				tasks[0].priority,
+				tasks[0].burst);
+		
+
 	} else {
 		printf("error\n");
 	}
+
+	printf("Name: %s, Priority: %d, Burst: %d\n",
+		       	tasks[0].name,
+		       	tasks[0].priority,
+		       	tasks[0].burst);
 	
+	printf("Name: %s, Priority: %d, Burst: %d\n",
+		       	tasks[7].name,
+		       	tasks[7].priority,
+		       	tasks[7].burst);
 	return 1;
 }	
 
