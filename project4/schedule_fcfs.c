@@ -51,8 +51,8 @@ int returnTaskContents(void){
 		while (fgets(line,sizeof line, fp) != NULL){
 			for (i = 0; i < 3; i++){
 				if (i == 0){
-					token = strtok(line, s);
 					// read task name
+					token = strtok(line, s);
 					printf("%d %s ", j, token);
 					tasks[j].name = token;
 				} else if (i == 1) {
