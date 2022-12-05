@@ -1,0 +1,11 @@
+in schedulers.h, schedeule() and add() are declared.
+
+schedule() should be created in schedule_fcfs, rr, and priority. each of these functions are
+called in their respective make.
+
+add() should be created in schedule_fcfs, rr, and priority. 
+
+schedule_fcfs.c:
+
+1. add() -> a task is given as a parameter, add each of these to a Task struct and add them to a node.
+2. schedule() -> Traverse the task (node) list and invoke run() from cpu.h

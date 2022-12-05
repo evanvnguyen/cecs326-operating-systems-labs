@@ -10,6 +10,7 @@
 #include "task.h"
 
 
+
 // add a new task to the list of tasks
 void insert(struct node **head, Task *newTask) {
     // add the new task to the list 
@@ -53,3 +54,12 @@ void traverse(struct node *head) {
         temp = temp->next;
     }
 }
+
+void sort(struct node *head){
+  struct node *temp;
+  temp = head;
+  while (temp != NUL){
+    // do something;
+  }
+}
+
