@@ -58,7 +58,7 @@ void traverse(struct node *head) {
 void sort(struct node *head){
   struct node *temp;
   temp = head;
-  while (temp != NUL){
+  while (temp != NULL){
     // do something;
   }
 }
