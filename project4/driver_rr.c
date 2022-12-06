@@ -38,19 +38,20 @@ int main(int argc, char *argv[])
         priority = atoi(strsep(&temp,","));
         burst = atoi(strsep(&temp,","));
 
-        // add the task to the local mytasks struct
-	mytasks[i].name = name;
-	mytasks[i].priority = priority;
-	mytasks[i].burst = burst;
-
 	// add the task to the schedulers linked list of tasks
-        add(name,priority,burst);
+        add(name,priority,burst, 0, 1, 1);
 	
         free(temp);
 	i++;
     }
 
     fclose(in);
+    
+    // add each task to the list
+    // subtract the time quantum
+    // if the result burst time is negative or 0, delete from list
+    // else, loop back
+    
     // For priority scheduling:
     // Sort the tasks based on priority
     Task temp1;

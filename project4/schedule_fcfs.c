@@ -21,7 +21,7 @@
 
 Task task;
 
-void add(char *name, int priority, int burst){
+void add(char *name, int priority, int burst, int fcfs, int pri, int rr){
 	// instead of allocating array of Task,
 	// can just dynamically create new nodes 
 	// here with the passed parameters.
@@ -38,7 +38,7 @@ void add(char *name, int priority, int burst){
 
 void schedule(void){
 	//traverse(head);
-	printf("FCFS finished!\n");	
+	printf("FCFS scheduling finished!\n");	
 }
 
 

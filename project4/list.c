@@ -44,7 +44,7 @@ void delete(struct node **head, Task *task) {
     }
 }
 
-// traverse the list
+// traverse the list 
 void traverse(struct node *head) {
     struct node *temp;
     temp = head;
@@ -53,13 +53,5 @@ void traverse(struct node *head) {
         printf("[%s] [%d] [%d]\n",temp->task->name, temp->task->priority, temp->task->burst);
         temp = temp->next;
     }
-}
-
-void sort(struct node *head){
-  struct node *temp;
-  temp = head;
-  while (temp != NULL){
-    // do something;
-  }
 }
 
