@@ -15,15 +15,12 @@
 
 Task task;
 
-void add(char *name, int priority, int burst, int fcfs, int pri, int rr){
+void add(struct node **head, char *name, int priority, int burst, int fcfs, int pri, int rr){
 
-	Node *head = NULL;
-	//Node *head = NULL;
 	task.name = name;
 	task.priority = priority;
 	task.burst = burst;
-	insert(&head, &task);
-	//priTraverse(head);	
+	insert(head, &task);
 	if (fcfs == 0 && pri == 1 && rr == 0) {
 		run(&task, task.burst);
 	}
@@ -31,6 +28,5 @@ void add(char *name, int priority, int burst, int fcfs, int pri, int rr){
 }
 
 void schedule(void){	
-	//printf("%d\n", task.priority);
 	printf("Priority scheduling finished!\n");
 }

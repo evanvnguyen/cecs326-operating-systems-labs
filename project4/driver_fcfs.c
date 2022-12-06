@@ -28,13 +28,14 @@ int main(int argc, char *argv[])
 	
     int i = 0;
     in = fopen(argv[1],"r");
+    Node *head = NULL;
     while (fgets(task,SIZE,in) != NULL) {
         temp = strdup(task);
         name = strsep(&temp,",");
         priority = atoi(strsep(&temp,","));
         burst = atoi(strsep(&temp,","));
 	// add the task to the schedulers linked list of tasks
-        add(name,priority,burst, 1, 0, 0);
+        add(&head,name,priority,burst, 1, 0, 0);
 	
         free(temp);
 	i++;

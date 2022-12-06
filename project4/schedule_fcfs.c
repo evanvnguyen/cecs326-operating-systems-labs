@@ -21,17 +21,16 @@
 
 Task task;
 
-void add(char *name, int priority, int burst, int fcfs, int pri, int rr){
+void add(struct node **head, char *name, int priority, int burst, int fcfs, int pri, int rr){
 	// instead of allocating array of Task,
 	// can just dynamically create new nodes 
 	// here with the passed parameters.
 	
-	Node *head = NULL;
 	task.name = name;
 	task.priority = priority;
 	task.burst = burst;
 	
-	insert(&head, &task);
+	insert(head, &task);
 	//traverse(head);
 	run(&task, task.burst);
 }

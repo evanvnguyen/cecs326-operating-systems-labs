@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	mytasks[i].burst = burst;
 
 	// add the task to the schedulers linked list of tasks
-        add(name,priority,burst, 0, 1, 1);
+        add(&head, name,priority,burst, 0, 1, 1);
 	
         free(temp);
 	i++;
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 
     for (i = 0; i < 8; i++){
     	//printf("%s, %d, %d\n", mytasks[i].name, mytasks[i].priority, mytasks[i].burst);
-    	add(mytasks[i].name, mytasks[i].priority, mytasks[i].burst, 0, 1, 0);
+    	add(&head, mytasks[i].name, mytasks[i].priority, mytasks[i].burst, 0, 1, 0);
     }
 
     // invoke the scheduler

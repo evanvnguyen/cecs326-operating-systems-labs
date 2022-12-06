@@ -14,12 +14,18 @@
 /*
  * Your code and design here:
  */
+Task task;
 
-void add(char *name, int priority, int burst, int fcfs, int pri, int rr){
+void add(struct node **head, char *name, int priority, int burst, int fcfs, int pri, int rr){
 	
 	// node stuff here
-	
+	//Node *head = NULL;
+	task.name = name;
+	task.priority = priority;
+	task.burst = burst;	
+	insert(head, &task);	
 	// flag stuff here
+	
 }
 
 void schedule(void){
