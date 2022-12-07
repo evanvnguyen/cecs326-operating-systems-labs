@@ -18,14 +18,10 @@ Task task;
 
 void add(struct node **head, char *name, int priority, int burst, int fcfs, int pri, int rr){
 	
-	// node stuff here
-	//Node *head = NULL;
 	task.name = name;
 	task.priority = priority;
 	task.burst = burst;	
-	insert(head, &task);	
-	// flag stuff here
-	
+	insert(head, &task);		
 }
 
 void schedule(void){

@@ -16,7 +16,7 @@
 #include "cpu.h"
 #define SIZE    100
 
-static const int TIME = 10; // Time quantuim
+static const int TIME = 10; // Time quantum
 Task mytasks[8];
 
 int main(int argc, char *argv[])
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
         burst = atoi(strsep(&temp,","));
 	
 
-	// add thet ask to the local mytasks struct
+	// add the task to the local mytasks struct
 	mytasks[i].name = name;
 	mytasks[i].priority = priority;
 	mytasks[i].burst = burst;
@@ -51,24 +51,28 @@ int main(int argc, char *argv[])
     }
 
     fclose(in);
+    
     // add each task to the list
     // subtract the time quantum
     // if the result burst time is negative or 0, delete from list
     // else, loop back
-    
-    for (i = 0; i < 8; i++){
-   	run(&mytasks[i], TIME);
-	if (mytasks[i].burst - TIME <= 0){
-		// delete it from the tasks
-		mytasks[i] = mytasks[i+1];
-	} else {
+    int num_done = 0;
+    while (num_done < 8){
+        for (i = 0; i < 8; i++){
+    	    if (mytasks[i].burst > 0){
+                run(&mytasks[i], TIME);
+	    }
+	    if (mytasks[i].burst - TIME <= 0){
+		mytasks[i].burst = 0;
+		printf("Task %s finished.\n", mytasks[i].name);
+		num_done++;
+	    } else {
 		mytasks[i].burst = mytasks[i].burst - TIME;
-	}
-	//printf("%s, %d, %d\n", mytasks[i].name, mytasks[i].priority, mytasks[i].burst);
-
+            }
+	    //printf("%s, %d, %d\n", mytasks[i].name, mytasks[i].priority, mytasks[i].burst);
+    	}
     }
-
-
+   
     for (i = 0; i < 8; i++){
     	//printf("%s, %d, %d\n", mytasks[i].name, mytasks[i].priority, mytasks[i].burst);
     	add(&head, mytasks[i].name, mytasks[i].priority, mytasks[i].burst, 0, 1, 1);
